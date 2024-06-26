@@ -7,10 +7,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>@vehicle.Make @vehicle.Model - @vehicle.Year Rp.@vehicle.RentalPrice</h1>
+       @*  <h1>@vehicle.Make @vehicle.Model - @vehicle.Year Rp.@vehicle.RentalPrice</h1>
         <form method="post" action="/Rental/Create">
             <input type="hidden" value="@vehicle.VehicleId" name="VehicleId" />
-            <input type="hidden" value="Pending" name="Status" />
+            <input type="hidden" value="Pending" name="Status" /> *@
 
             <div class="form-group">
                 <label for="UserId">User Id</label>
@@ -24,7 +24,7 @@
                 <input type="date" id="ReturnDate" name="ReturnDate" class="form-control" required />
             </div>
             <button type="submit" value="Create" class="btn btn-primary">Confirm Rental</button>
-        </form>
+        @* </form> *@
     </div>
 </body>
 </html>

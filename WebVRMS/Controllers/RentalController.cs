@@ -52,7 +52,7 @@ namespace WebVRMS.Controllers
 
                 TempData["Message"] = $"Rental {rental.RentalId} added successfully";
 
-                return RedirectToAction(nameof(adm));
+                return RedirectToAction(nameof(Adm));
             }
             catch
             {
