@@ -23,6 +23,11 @@ namespace WebVRMS.Services
             throw new NotImplementedException();
         }
 
+        public void Delete(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Rental> GetAll()
         {
             var results = _context.Rentals.ToList();

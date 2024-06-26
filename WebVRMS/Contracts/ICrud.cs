@@ -8,5 +8,6 @@
         T Add(T entity);
         T Update(T entity);
         void Delete(int id);
+        void Delete(string id);
     }
 }
