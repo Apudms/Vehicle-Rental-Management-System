@@ -18,6 +18,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IVehicle, VehiclesService>();
 builder.Services.AddScoped<IRental, RentalsService>();
 builder.Services.AddScoped<IInvoice, InvoiceService>();
+builder.Services.AddScoped<IPayment, PaymentsService>();
 
 
 var app = builder.Build();
