@@ -15,6 +15,7 @@ builder.Services.AddDbContext<VehicleRentalDbContext>(options =>
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IRental, RentalsService>();
+builder.Services.AddScoped<IInvoice, InvoiceService>();
 
 var app = builder.Build();
 

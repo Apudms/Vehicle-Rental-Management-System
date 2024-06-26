@@ -37,8 +37,8 @@ namespace WebVRMS.Services
         public Invoice GetById(string id)
         {
             var result = _context.Invoices
-                            .Include(i => i.Ri)
-                            .FirstOrDefault(i => i.Riid == id);
+                            .Where(i => i.InvoiceId == id)
+                            .FirstOrDefault();
 
             if (result == null)
             {

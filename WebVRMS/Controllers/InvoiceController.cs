@@ -1,20 +1,36 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebVRMS.Contracts;
+using WebVRMS.Models;
 
 namespace WebVRMS.Controllers
 {
     public class InvoiceController : Controller
     {
+        private readonly IInvoice _invoice;
+
+        public InvoiceController(IInvoice invoice)
+        {
+            _invoice = invoice;
+        }
+
         // GET: InvoicesController
         public ActionResult Index()
         {
-            return View();
+            if (TempData["Message"] != null)
+            {
+                ViewBag.Message = TempData["Message"];
+            }
+            IEnumerable<Invoice> invoices;
+            invoices = _invoice.GetAll();
+            return View(invoices);
         }
 
         // GET: InvoicesController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            var invoice = _invoice.GetById(id);
+            return View(invoice);
         }
 
         // GET: InvoicesController/Create
