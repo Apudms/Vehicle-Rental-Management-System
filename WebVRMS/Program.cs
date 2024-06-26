@@ -5,17 +5,20 @@ using WebVRMS.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//register dbcontext untuk EF
+// register dbcontext ef
 builder.Services.AddDbContext<VehicleRentalDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-//menambahkan modul mvc
+// Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Inject DI
+builder.Services.AddScoped<IVehicle, VehiclesService>();
 builder.Services.AddScoped<IRental, RentalsService>();
 builder.Services.AddScoped<IInvoice, InvoiceService>();
+
 
 var app = builder.Build();
 
