@@ -15,10 +15,24 @@ namespace WebVRMS.Services
 
         public Rental Add(Rental entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Rentals.Add(entity);
+                _context.SaveChanges();
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(string id)
         {
             throw new NotImplementedException();
         }

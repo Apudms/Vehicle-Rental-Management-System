@@ -98,5 +98,9 @@ namespace WebVRMS.Services
                 throw new ArgumentException(ex.Message);
             }
         }
+        public IEnumerable<Vehicle> GetAllAvailableVehicles()
+        {
+            return _vehicleRentalDbContext.Vehicles.Where(v => v.AvailabilityStatus).ToList();
+        }
     }
 }

@@ -13,10 +13,22 @@ namespace WebVRMS.Controllers
             _vehicle = vehicle;
         }
 
+        public ActionResult Adm()
+        {
+            var models = _vehicle.GetAll();
+            return View(models); 
+        }
+
+        public ActionResult VehicleDetail(string id)
+        {
+            var vehicle = _vehicle.GetById(id);
+            return View(vehicle);
+        }
+
         // GET: VehiclesController
         public ActionResult Index()
         {
-            var models = _vehicle.GetAll();
+            var models = _vehicle.GetAllAvailableVehicles();
             return View(models);
         }
 
@@ -40,7 +52,7 @@ namespace WebVRMS.Controllers
             try
             {
                 var result = _vehicle.Add(vehicle);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Adm));
             }
             catch (Exception ex)
             {
