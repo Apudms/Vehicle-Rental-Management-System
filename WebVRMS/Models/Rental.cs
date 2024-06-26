@@ -22,4 +22,4 @@ public partial class Rental
     public virtual User User { get; set; } = null!;
 
     public virtual Vehicle Vehicle { get; set; } = null!;
-}
+

@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using WebVRMS.Contracts;
 using WebVRMS.Models;
 using WebVRMS.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +16,8 @@ builder.Services.AddControllersWithViews();
 
 // Inject DI
 builder.Services.AddScoped<IVehicle, VehiclesService>();
+builder.Services.AddScoped<IRental, RentalsService>();
+builder.Services.AddScoped<IInvoice, InvoiceService>();
 
 
 var app = builder.Build();
