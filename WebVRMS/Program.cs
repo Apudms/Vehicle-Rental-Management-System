@@ -1,7 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using WebVRMS.Contracts;
+using WebVRMS.Models;
+using WebVRMS.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//register dbcontext untuk EF
+builder.Services.AddDbContext<VehicleRentalDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr"));
+});
+
+//menambahkan modul mvc
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IRental, RentalsService>();
+builder.Services.AddScoped<IInvoice, InvoiceService>();
 
 var app = builder.Build();
 

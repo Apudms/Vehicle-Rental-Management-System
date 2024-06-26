@@ -27,16 +27,16 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[RentalUser]",
-         "ObjectType": 0
-      },
-      {
          "Name": "[dbo].[Users]",
          "ObjectType": 0
       },
       {
          "Name": "[dbo].[Vehicles]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[sp_GenerateMonthlyRentalReports]",
+         "ObjectType": 1
       }
    ],
    "UiHint": null,
