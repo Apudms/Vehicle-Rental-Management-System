@@ -5,41 +5,41 @@ using WebVRMS.Models;
 
 namespace WebVRMS.Controllers
 {
-    public class InvoiceController : Controller
+    public class PaymentsController : Controller
     {
-        private readonly IInvoice _invoice;
+        private readonly IPayment _payment;
 
-        public InvoiceController(IInvoice invoice)
+        public PaymentsController(IPayment payment)
         {
-            _invoice = invoice;
+            _payment = payment;
         }
-        
-        // GET: InvoicesController
+
+        // GET: PaymentsController
         public ActionResult Index()
         {
             if (TempData["Message"] != null)
             {
                 ViewBag.Message = TempData["Message"];
             }
-            IEnumerable<Invoice> invoices;
-            invoices = _invoice.GetAll();
-            return View(invoices);
+            IEnumerable<Payment> payments;
+            payments = _payment.GetAll();
+            return View(payments);
         }
 
-        // GET: InvoicesController/Details/5
+        // GET: PaymentsController/Details/5
         public ActionResult Details(string id)
         {
-            var invoice = _invoice.GetById(id);
-            return View(invoice);
+            var payment = _payment.GetById(id);
+            return View(payment);
         }
 
-        // GET: InvoicesController/Create
+        // GET: PaymentsController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: InvoicesController/Create
+        // POST: PaymentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -54,13 +54,13 @@ namespace WebVRMS.Controllers
             }
         }
 
-        // GET: InvoicesController/Edit/5
+        // GET: PaymentsController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: InvoicesController/Edit/5
+        // POST: PaymentsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -75,13 +75,13 @@ namespace WebVRMS.Controllers
             }
         }
 
-        // GET: InvoicesController/Delete/5
+        // GET: PaymentsController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: InvoicesController/Delete/5
+        // POST: PaymentsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
