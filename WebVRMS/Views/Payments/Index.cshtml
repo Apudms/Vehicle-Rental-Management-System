@@ -1,0 +1,31 @@
+﻿@model List<WebVRMS.Models.Payment>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Payment Data</h1>
+
+<table class="Payment Data">
+    <thead>
+        <tr>
+            <th>Payment Id</th>
+            <th>Amount</th>
+            <th>Payment Date</th>
+            <th>Invoice Id</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var payment in Model)
+        {
+            <tr>
+                <td>@payment.PaymentId</td>
+                <td>@payment.Amount</td>
+                <td>@payment.PaymentDate</td>
+                <td>@payment.Ipid</td>
+                <td><a href="/Payments/Details/@payment.PaymentId">detail</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
