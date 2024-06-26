@@ -1,0 +1,31 @@
+﻿@model List<WebVRMS.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Invoice Data</h1>
+
+<table class="Invoice Data">
+    <thead>
+        <tr>
+            <th>Invoice Id</th>
+            <th>Amount</th>
+            <th>Invoice Date</th>
+            <th>Rental Id</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var invoice in Model)
+        {
+            <tr>
+                <td>@invoice.InvoiceId</td>
+                <td>@invoice.Amount</td>
+                <td>@invoice.InvoiceDate</td>
+                <td>@invoice.Riid</td>
+                <td><a href="/Invoice/Details/@invoice.InvoiceId">detail</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+﻿@model List<WebVRMS.Models.Rental>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Rentals</h1>
+
+<table class="Rental Data">
+    <thead>
+        <tr>
+            <th>RentalId</th>
+            <th>RentalDate</th>
+            <th>ReturnDate</th>
+            <th>Status</th>
+            <th>UserId</th>
+            <th>VehicleId</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rental in Model)
+        {
+            <tr>
+                <td>@rental.RentalId</td>
+                <td>@rental.RentalDate</td>
+                <td>@rental.ReturnDate</td>
+                <td>@rental.Status</td>
+                <td>@rental.UserId</td>
+                <td>@rental.VehicleId</td>
+                <td><a href="/Rental/Details/@rental.RentalId">detail</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

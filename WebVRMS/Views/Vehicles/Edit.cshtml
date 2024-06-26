@@ -1,0 +1,36 @@
+﻿@model WebVRMS.Models.Vehicle
+
+
+<html>
+<head>
+    <title>Edit Vehicle</title>
+</head>
+<body>
+    <h2>Edit Vehicle</h2>
+    <form method="post" action="/Vehicles/Edit">
+        <input type="hidden" value="@Model.VehicleId" name="VehicleId" />
+        <div>
+            <label for="Make">Make:</label>
+            <input type="text" value="@Model.Make" name="Make" />
+
+            <label for="Model">Model:</label>
+            <input type="text" value="@Model.Model" name="Model" />
+
+            <label for="Year">Year:</label>
+            <input type="text" value="@Model.Year" name="Year" />
+
+            <label for="RentalPrice">Rental Price:</label>
+            <input type="text" value="@Model.RentalPrice" name="RentalPrice" />
+
+            <label for="AvailabilityStatus">Availability Status:</label>
+            <select name="AvailabilityStatus">
+                <option value="true">Available</option>
+                <option value="false">Not Available</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Edit" />
+        </div>
+    </form>
+</body>
+</html>

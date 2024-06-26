@@ -1,0 +1,38 @@
+﻿<html>
+<head>
+    <title>Create Vehicle</title>
+</head>
+<body>
+    <h2>Create Vehicle</h2>
+    <form method="post" action="/Vehicles/Create">
+        <div>
+            <label for="VehicleId">Vehicle Id:</label>
+            <input type="text" name="VehicleId" />
+
+            <label for="Make">Make:</label>
+            <input type="text" name="Make" />
+
+            <label for="Model">Model:</label>
+            <input type="text" name="Model" />
+
+            <label for="Year">Year:</label>
+            <input type="text" name="Year" />
+
+            <label for="RentalPrice">RentalPrice:</label>
+            <input type="text" name="RentalPrice" />
+
+@*             <label for="AvailabilityStatus">Availability Status:</label>
+            <input type="text" name="AvailabilityStatus" /> *@
+
+            <label for="AvailabilityStatus">Availability Status:</label>
+            <select name="AvailabilityStatus">
+                <option value="true">Available</option>
+                <option value="false">Not Available</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Create" />
+        </div>
+    </form>
+</body>
+</html>

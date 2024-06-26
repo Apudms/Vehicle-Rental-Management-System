@@ -4,8 +4,10 @@
     {
         IEnumerable<T> GetAll();
         T GetById(int id);
+        T GetById(string id);
         T Add(T entity);
         T Update(T entity);
         void Delete(int id);
+        void Delete(string id);
     }
 }
