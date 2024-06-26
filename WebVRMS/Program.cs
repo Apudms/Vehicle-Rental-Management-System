@@ -1,7 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using WebVRMS.Contracts;
+using WebVRMS.Models;
+using WebVRMS.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// register dbcontext ef
+builder.Services.AddDbContext<VehicleRentalDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Inject DI
+builder.Services.AddScoped<IVehicle, VehiclesService>();
+
 
 var app = builder.Build();
 
