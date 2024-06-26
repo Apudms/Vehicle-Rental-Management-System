@@ -2,20 +2,23 @@
 using Microsoft.AspNetCore.Mvc;
 using WebVRMS.Contracts;
 using WebVRMS.Models;
+using WebVRMS.ViewModels;
 
 namespace WebVRMS.Controllers
 {
     public class RentalController : Controller
     {
         private readonly IRental _rental;
+        private readonly IVehicle _vehicle;
 
-        public RentalController(IRental rental)
+        public RentalController(IRental rental, IVehicle vehicle)
         {
             _rental = rental;
+            _vehicle = vehicle;
         }
 
         // GET: RentalController
-        public ActionResult Index()
+        public ActionResult Adm()
         {
             if (TempData["Message"] != null)
             {
@@ -34,22 +37,26 @@ namespace WebVRMS.Controllers
         }
 
         // GET: RentalController/Create
-        public ActionResult Create()
+        public ActionResult Create(string id)
         {
             return View();
         }
 
         // POST: RentalController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Rental rental)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var result = _rental.Add(rental);
+
+                TempData["Message"] = $"Rental {rental.RentalId} added successfully";
+
+                return RedirectToAction(nameof(adm));
             }
             catch
             {
+                ViewBag.ErrorMessage = "Category not added";
                 return View();
             }
         }

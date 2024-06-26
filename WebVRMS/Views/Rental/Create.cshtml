@@ -1,0 +1,30 @@
+﻿@model WebVRMS.Models.Rental
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rent Vehicle</title>
+</head>
+<body>
+    <div class="container">
+        <h1>@vehicle.Make @vehicle.Model - @vehicle.Year Rp.@vehicle.RentalPrice</h1>
+        <form method="post" action="/Rental/Create">
+            <input type="hidden" value="@vehicle.VehicleId" name="VehicleId" />
+            <input type="hidden" value="Pending" name="Status" />
+
+            <div class="form-group">
+                <label for="UserId">User Id</label>
+                <input type="text" id="UserId" name="UserId" class="form-control" required />
+
+                <label for="RentalDate">Rental Date</label>
+                <input type="date" id="RentalDate" name="RentalDate" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="ReturnDate">Return Date</label>
+                <input type="date" id="ReturnDate" name="ReturnDate" class="form-control" required />
+            </div>
+            <button type="submit" value="Create" class="btn btn-primary">Confirm Rental</button>
+        </form>
+    </div>
+</body>
+</html>

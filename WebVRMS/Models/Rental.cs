@@ -23,4 +23,3 @@ public partial class Rental
 
     public virtual Vehicle Vehicle { get; set; } = null!;
 }
-
