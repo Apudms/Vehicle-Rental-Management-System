@@ -13,11 +13,11 @@ public partial class Vehicle
 
     public string Model { get; set; }
 
-    public DateOnly? Year { get; set; }
+    public string Year { get; set; }
 
-    public decimal? RentalPrice { get; set; }
+    public decimal RentalPrice { get; set; }
 
-    public bool? AvailabilityStatus { get; set; }
+    public bool AvailabilityStatus { get; set; }
 
     public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();
 }
