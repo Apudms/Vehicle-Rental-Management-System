@@ -24,6 +24,7 @@ namespace WebVRMS.Services
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+                Console.WriteLine(entity.RentalId);
             }
         }
 
@@ -43,11 +44,6 @@ namespace WebVRMS.Services
             return results;
         }
 
-        public Rental GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public Rental GetById(string id)
         {
             var result = _context.Rentals
@@ -60,6 +56,11 @@ namespace WebVRMS.Services
                 throw new ArgumentException($"Rental with ID: {id} not found");
             }
             return result;
+        }
+
+        public Rental GetById(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public Rental Update(Rental entity)

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebVRMS.Models.Vehicle>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicles For Rent</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vehicles Available for Rent</h1>
+        <div class="row">
+            @foreach (var vehicle in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">@vehicle.Make @vehicle.Model</h5>
+                            <p class="card-text">
+                                Year: @vehicle.Year <br />
+                                Price: Rp.@vehicle.RentalPrice
+                            </p>
+                            <form method="get" action="/Rental/Create">
+                                <input type="hidden" name="id" value="@vehicle.VehicleId" />
+                                <button type="submit" class="btn btn-primary">Rent</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

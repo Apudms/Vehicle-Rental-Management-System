@@ -33,6 +33,12 @@ namespace WebVRMS.Controllers
             return View(models);
         }
 
+        public ActionResult ForRent()
+        {
+            var models = _vehicle.GetAllAvailableVehicles();
+            return View(models);
+        }
+
         // GET: VehiclesController/Details/5
         public ActionResult Details(string id)
         {
