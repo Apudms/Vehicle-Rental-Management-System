@@ -39,26 +39,46 @@ namespace WebVRMS.Controllers
         // GET: RentalController/Create
         public ActionResult Create(string id)
         {
-            return View();
+            var vehicle = _vehicle.GetById(id);
+
+            var vehicleRentalViewModel = new VehicleRentalViewModel
+            {
+                VehicleId = vehicle.VehicleId,
+                RentalPrice = vehicle.RentalPrice,
+                Make = vehicle.Make,
+                Model = vehicle.Model,
+                Year = vehicle.Year
+            };
+            return View(vehicleRentalViewModel);
         }
 
         // POST: RentalController/Create
         [HttpPost]
-        public ActionResult Create(Rental rental)
+        public ActionResult Create(VehicleRentalViewModel vehicleRentalViewModel)
         {
-            try
+            var rental = new Rental
             {
-                var result = _rental.Add(rental);
+                VehicleId = vehicleRentalViewModel.VehicleId,
+                UserId = vehicleRentalViewModel.UserId,
+                RentalDate = vehicleRentalViewModel.RentalDate,
+                ReturnDate = vehicleRentalViewModel.ReturnDate
+            };
 
-                TempData["Message"] = $"Rental {rental.RentalId} added successfully";
+            _rental.Add(rental);
+            return RedirectToAction(nameof(Adm));
+            //try
+            //{
+            //    var result = _rental.Add(rental);
 
-                return RedirectToAction(nameof(Adm));
-            }
-            catch
-            {
-                ViewBag.ErrorMessage = "Category not added";
-                return View();
-            }
+            //    TempData["Message"] = $"Rental {rental.RentalId} added successfully";
+
+            //    return RedirectToAction(nameof(Adm));
+            //}
+            //catch
+            //{
+            //    ViewBag.ErrorMessage = "Category not added";
+            //    return View();
+            //}
         }
 
         // GET: RentalController/Edit/5

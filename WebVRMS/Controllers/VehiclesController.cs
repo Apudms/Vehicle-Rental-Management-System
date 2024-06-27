@@ -28,6 +28,13 @@ namespace WebVRMS.Controllers
         // GET: VehiclesController
         public ActionResult Index()
         {
+            //var models = _vehicle.GetAllAvailableVehicles();
+            var models = _vehicle.GetAll();
+            return View(models);
+        }
+
+        public ActionResult ForRent()
+        {
             var models = _vehicle.GetAllAvailableVehicles();
             return View(models);
         }
